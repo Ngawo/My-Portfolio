@@ -1,10 +1,4 @@
-/**
-* Template Name: DevFolio
-* Updated: Nov 17 2023 with Bootstrap v5.3.2
-* Template URL: https://bootstrapmade.com/devfolio-bootstrap-portfolio-html-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+
 (function() {
   "use strict";
 
@@ -159,21 +153,6 @@
     }
   });
 
-  /**
-   * Intro type effect
-   */
-  const typed = select('.typed')
-  if (typed) {
-    let typed_strings = typed.getAttribute('data-typed-items')
-    typed_strings = typed_strings.split(',')
-    new Typed('.typed', {
-      strings: typed_strings,
-      loop: true,
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 2000
-    });
-  }
 
   /**
    * Initiate portfolio lightbox 
@@ -200,6 +179,26 @@
     }
   });
 
+  // form submition
+  document.addEventListener('DOMContentLoaded', function () {
+    const contactForm = document.getElementById('contactForm');
+ 
+    const sendEmail = (e) => {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        emailjs.sendForm('service_xp7k5on', 'template_ia0yz3w', '#contactForm', 'OkDz7aA-TsfOrtNE5')
+            .then(() => {
+                alert('Message sent successfully');
+                contactForm.reset();
+            })
+            .catch((error) => {
+                console.error('Error sending message:', error);
+                alert('Message not sent. An error occurred. Please check the console for details.');
+            });
+    }
+ 
+    contactForm.addEventListener('submit', sendEmail);
+});
   /**
    * Portfolio details slider
    */
